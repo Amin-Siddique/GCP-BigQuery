@@ -1,0 +1,5 @@
+--Getting ACL for dataset analytics in json
+bq show --format=prettyjson   analytics > /home/aminsiddique95/permissions/analytics_dataset_acl.json
+
+--After Edit, Update to apply the same to the dataset (This will overwrite the existing key-value)
+bq update --source /home/aminsiddique95/permissions/analytics_dataset_acl.json analytics
