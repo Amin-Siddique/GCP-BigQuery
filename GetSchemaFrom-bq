@@ -1,0 +1,16 @@
+-- Save schema from table
+
+bq show \
+   --schema \
+   --format=prettyjson \
+   analytics.customer > /home/aminsiddique95/schema/analytics_customer.json
+
+
+ 
+-- Using schema to create a new table:
+bq mk \
+  -t \
+  --expiration 3600 \
+  --description "This is modified customer table" \
+  analytics.customer_temp_1HOUR   \
+  /home/aminsiddique95/schema/analytics_customer.json
